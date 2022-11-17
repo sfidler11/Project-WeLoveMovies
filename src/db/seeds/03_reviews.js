@@ -38,6 +38,7 @@ const generateReviews = (criticIds, movieIds) => {
     .filter((reviews) => reviews.content);
 };
 
+
 exports.seed = async function (knex) {
   const criticIds = await knex("critics").select("critic_id");
   const movieIds = await knex("movies").select("movie_id");
