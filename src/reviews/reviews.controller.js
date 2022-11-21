@@ -8,7 +8,10 @@ async function validateReview(req, res, next) {
         res.locals.review = review;
         return next();
     }
-next({status:404, message:`cannot be found: ${reviewId}`})
+    next({
+        status:404, 
+        message:`cannot be found: ${reviewId}`
+    });
 }
 
 async function update(req, res, next) {
@@ -23,7 +26,14 @@ async function update(req, res, next) {
      res.json({ data: await reviewsService.read(updatedReview.review_id) });
 }
 
+async function destroy(req, res, next){
+    reviewsService.delete(res.locals.review.review_id)
+        .then(() => res.sendStatus(204))
+        .catch(next);
+}
+
 
 module.exports = {
     update: [validateReview, update],
+    delete: [validateReview, destroy],
 }

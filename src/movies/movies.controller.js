@@ -11,9 +11,11 @@ async function validateMovie(req, res, next) {
         return next();
     }
 
-    next(
-        res.status(404),
-        res.json({error: "Movie cannot be found."})); 
+    next({
+        status:404, 
+        message:`Movie cannot be found: Id ${movieId}`
+    });
+ 
 }
 
 async function list(req, res, next) {
