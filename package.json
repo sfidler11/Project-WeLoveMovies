@@ -17,8 +17,7 @@
     "start:dev": "nodemon src/server.js",
     "start:solution": "docker-compose up --build",
     "test": "jest",
-    "test:solution": "docker-compose build && docker-compose run --rm api npm test && docker-compose down",
-    "start:seed": "npx kill-port 5000 & npm run start & npm run knex seed:run"
+    "test:solution": "docker-compose build && docker-compose run --rm api npm test && docker-compose down"
   },
   "keywords": [],
   "author": "",
